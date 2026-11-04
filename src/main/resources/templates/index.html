@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+
+            <h2 th:text="${name}">Aryan Patel</h2>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+
+        <div>
+            <h3>Hello, Welcome to My Portfolio</h3>
+            <h1>I am <span th:text="${name}">Aryan Patel</span></h1>
+            <h2 th:text="${role}">Java Backend Developer</h2>
+
+            <p th:text="${intro}"></p>
+
+            <a href="#projects" class="btn">View Projects</a>
+        </div>
+
+        <div class="profile">
+            <div class="profile-circle">AP</div>
+        </div>
+
+    </section>
+
+    <section id="about" class="section">
+
+        <h1>About Me</h1>
+
+        <p th:text="${about}"></p>
+
+    </section>
+
+    <section id="skills" class="section">
+
+        <h1>My Skills</h1>
+
+        <div class="card-container">
+
+            <div class="card" th:each="skill : ${skills}">
+
+                <h3 th:text="${skill.name}"></h3>
+                <p th:text="${skill.level}"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="projects" class="section">
+
+        <h1>My Projects</h1>
+
+        <div class="card-container">
+
+            <div class="card" th:each="project : ${projects}">
+
+                <h2 th:text="${project.title}"></h2>
+
+                <p th:text="${project.description}"></p>
+
+                <h4 th:text="${project.technology}"></h4>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="contact" class="section">
+
+        <h1>Contact Me</h1>
+
+        <p>
+            Email:
+            <a th:href="'mailto:' + ${email}"
+               th:text="${email}"></a>
+        </p>
+
+        <p>
+            GitHub:
+            <a th:href="${github}" target="_blank">Visit GitHub</a>
+        </p>
+
+        <p>
+            LinkedIn:
+            <a th:href="${linkedin}" target="_blank">Visit LinkedIn</a>
+        </p>
+
+    </section>
+
+    <footer>
+        <p>
+            <span id="year"></span>
+            <span th:text="${name}"></span>
+            | All Rights Reserved
+        </p>
+    </footer>
+
+    <script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>
